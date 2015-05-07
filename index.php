@@ -5,7 +5,7 @@ ini_set('default_socket_timeout', 300);
 session_start();
 
 //Make constants using define.
-define('client_ID', '9ae4c7b4dbaa40a980b5cfa58e733a28');
+define('clientID', '9ae4c7b4dbaa40a980b5cfa58e733a28');
 define('client_Secret', '42f5be596d8a4151897df655b413a9f0');
 define('redirectURI', 'http://localhost/appapi/index.php');
 define('ImageDirectory', 'pics/');
@@ -22,7 +22,7 @@ REDIRECT URI	http://localhost/appapi/index.php
  	<title></title>
  </head>
  <body>
- 	<a href="https:api.instagram/oauth.authorize/?client_id=<?php echo client_ID; ?>5redirect_uri=<?php echo redirectURI; ?>5response_type=code/">LOGIN</a>
+ 	<a href="https:api.instagram.com/oauth.authorize/?client_id=<?php echo clientID; ?>&redirect_uri=<?php echo redirectURI; ?>&response_type=code/">LOGIN</a>
  	<script src="js/main.js"></script>
  </body>
  </html>
