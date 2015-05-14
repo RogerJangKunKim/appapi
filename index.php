@@ -27,7 +27,7 @@ function connectToInstagram($url){
 
 //function to get userID cause the userName doesn't allow us to get pictures
 function getUserID($userName){
-	$url = 'http://api.instagram.com/v1/users/search?q='.$userName.'&client_id='.clientID;
+	$url = 'https://api.instagram.com/v1/users/search?q='.$userName.'&client_id='.clientID;
 	$instagramInfo = connectToInstagram($url);
 	$results = json_decode($instagramInfo, true);
 
@@ -98,6 +98,7 @@ REDIRECT URI	http://localhost/appapi/index.php
  <html>
  <head>
  	<title></title>
+ 	<link rel="stylesheet" type="text/css" href="main.css">
  </head>
  <body>
  	<a href="https:api.instagram.com/oauth/authorize/?client_id=<?php echo clientID; ?>&redirect_uri=<?php echo redirectURI; ?>&response_type=code">LOGIN</a>
