@@ -50,9 +50,9 @@ function printImages($userID){
 
 //function to save image to server
 function savePictures($image_url){
-	echo $image_url.'<br>'; //filename is what we are storing. basename is the PGP built in method that we are using to store $image_url
+	//echo $image_url.'<br>'; //filename is what we are storing. basename is the PGP built in method that we are using to store $image_url
 	$filename = basename($image_url);
-	echo $filename . '<br>';
+	//echo $filename . '<br>';
 
 	$destination = ImageDirectory . $filename; //making sure that the image doesn't exist in the storage
 	file_put_contents($destination, file_get_contents($image_url)); //goes and grabs an imagefile and stores it into out server
@@ -60,6 +60,11 @@ function savePictures($image_url){
 }
 
 if (isset($_GET['code'])){
+	?>
+	<div>
+		Instagram
+	</div>
+	<?php
 	$code = ($_GET['code']);
 	$url = "https://api.instagram.com/oauth/access_token";
 	$access_token_settings = array('client_id' => clientID,
@@ -85,6 +90,32 @@ $userName = $results['user']['username'];
 $userID = getUserID($userName);
 
 printImages($userID);
+
+?>
+
+<!DOCTYPE html>
+<html id='instapage'>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" id="font-awesome-css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" type="text/css" media="screen">
+</head>
+<body>
+	<!-- <div class="scroll-top-wrapper ">
+		<span class="scroll-top-inner">
+			<i class="fa fa-2x fa-arrow-circle-up"></i>
+		</span>
+	</div> -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script type="text/javascript" src='main.js'></script>
+	<script type="text/javascript" src="http://arrow.scrolltotop.com/arrow59.js"></script>
+</body>
+</html>
+
+<?php
 }
 else{
 ?>
@@ -95,14 +126,31 @@ WEBSITE URL	    http://localhost/appapi/index.php
 REDIRECT URI	http://localhost/appapi/index.php
  -->
  <!DOCTYPE html>
- <html>
+ <html id='loginpage'>
  <head>
  	<title></title>
  	<link rel="stylesheet" type="text/css" href="main.css">
+ 	<meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" id="font-awesome-css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" type="text/css" media="screen">
  </head>
  <body>
- 	<a href="https:api.instagram.com/oauth/authorize/?client_id=<?php echo clientID; ?>&redirect_uri=<?php echo redirectURI; ?>&response_type=code">LOGIN</a>
- 	<script src="js/main.js"></script>
+
+ 	<div>
+ 		<h1>APP API</h1>
+ 	</div>
+ 	<!-- <div class="scroll-top-wrapper ">
+		<span class="scroll-top-inner">
+			<i class="fa fa-2x fa-arrow-circle-up"></i>
+		</span>
+	</div> -->
+ 	<a href="https:api.instagram.com/oauth/authorize/?client_id=<?php echo clientID; ?>&redirect_uri=<?php echo redirectURI; ?>&response_type=code"><button>LOGIN</button></a>
+ 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+ 	<script type="text/javascript" src='main.js'></script>
+	<script type="text/javascript" src="http://arrow.scrolltotop.com/arrow59.js"></script>
+
+
  </body>
  </html>
  <?php
